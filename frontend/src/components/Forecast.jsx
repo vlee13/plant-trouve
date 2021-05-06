@@ -19,6 +19,7 @@ function Forecast(props) {
   useEffect(() => {
     axios.request(options).then((res) => {
       setAirQ(res.data.stations);
+      console.log(res.data);
     });
   }, []);
 
@@ -28,13 +29,13 @@ function Forecast(props) {
     <div>
       <h1>Air Quality</h1>
       <h3>
-        {airQ[0].placeName},{airQ[0].city}
+        {airQ[0]?.placeName},{airQ[0]?.city}
       </h3>
       <ul>
         <h3>AQI Info:</h3>
-        <li>{airQ[0].aqiInfo.category}</li>
-        <li>{airQ[0].aqiInfo.concentration}</li>
-        <li>{airQ[0].aqiInfo.pollutant}</li>
+        <li>{airQ[0]?.aqiInfo.category}</li>
+        <li>{airQ[0]?.aqiInfo.concentration}</li>
+        <li>{airQ[0]?.aqiInfo.pollutant}</li>
       </ul>
     </div>
   );
